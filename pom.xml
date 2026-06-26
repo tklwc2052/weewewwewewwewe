@@ -53,26 +53,26 @@
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>net.dmulloy2</groupId>
-            <artifactId>ProtocolLib</artifactId>
-            <version>4.8.0</version>
-            <scope>provided</scope>
-        </dependency>
+<dependency>
+    <groupId>net.dmulloy2</groupId>
+    <artifactId>ProtocolLib</artifactId>
+    <version>5.4.0</version>
+    <scope>provided</scope>
+</dependency>
 
-        <dependency>
-            <groupId>com.viaversion</groupId>
-            <artifactId>viaversion</artifactId>
-            <version>4.0.1</version>
-            <scope>provided</scope>
-        </dependency>
+<dependency>
+    <groupId>com.viaversion</groupId>
+    <artifactId>viaversion</artifactId>
+    <version>5.4.1</version>
+    <scope>provided</scope>
+</dependency>
 
-        <dependency>
-            <groupId>com.viaversion</groupId>
-            <artifactId>viabackwards</artifactId>
-            <version>4.0.2</version>
-            <scope>provided</scope>
-        </dependency>
+<dependency>
+    <groupId>com.viaversion</groupId>
+    <artifactId>viabackwards</artifactId>
+    <version>5.3.2</version>
+    <scope>provided</scope>
+</dependency>
 
         <dependency>
             <groupId>com.github.Querz</groupId>
