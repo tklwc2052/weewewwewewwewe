@@ -59,7 +59,57 @@ public class TuffX extends JavaPlugin implements Listener, PluginMessageListener
         if (d) getLogger().log(Level.INFO, "[TuffX-Debug] " + m);
     }
 
-    public record WCK(String w, int x, int z) {}
+    // --- REPLACED JAVA 14 RECORD WITH JAVA 8 POJO ---
+    public static final class WCK {
+        public final String w;
+        public final int x;
+        public final int z;
+
+        public WCK(String w, int x, int z) {
+            this.w = w;
+            this.x = x;
+            this.z = z;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            WCK wck = (WCK) o;
+            return x == wck.x && z == wck.z && Objects.equals(w, wck.w);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(w, x, z);
+        }
+    }
+
+    // --- REPLACED JAVA 14 RECORD WITH JAVA 8 POJO ---
+    public static final class CSC {
+        public final int x;
+        public final int y;
+        public final int z;
+
+        public CSC(int x, int y, int z) {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            CSC csc = (CSC) o;
+            return x == csc.x && y == csc.y && z == csc.z;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(x, y, z);
+        }
+    }
 
     @Override
     public void onEnable() {
@@ -106,8 +156,6 @@ public class TuffX extends JavaPlugin implements Listener, PluginMessageListener
             return t;
         });
     }
-
-    public record CSC(int x, int y, int z) {}
 
     @Override
     public void onDisable() {
