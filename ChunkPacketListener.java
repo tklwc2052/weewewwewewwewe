@@ -14,7 +14,7 @@ public class ChunkPacketListener {
 
     private static boolean initialized = false;
 
-    public static void initialize(TuffX plugin) {
+    public static void initialize(final TuffX plugin) {
         if (initialized) {
             return;
         }
@@ -29,20 +29,21 @@ public class ChunkPacketListener {
             new PacketAdapter(plugin, PacketType.Play.Server.MAP_CHUNK) {
                 @Override
                 public void onPacketSending(PacketEvent event) {
-                    Player player = event.getPlayer();
+                    final Player player = event.getPlayer();
 
-                    if (!((TuffX) this.plugin).isPlayerReady(player)) {
+                    // Use the parameter 'plugin' directly instead of '((TuffX) this.plugin)'
+                    if (!plugin.isPlayerReady(player)) {
                         return;
                     }
 
-                    World world = player.getWorld();
-                    int chunkX = event.getPacket().getIntegers().read(0);
-                    int chunkZ = event.getPacket().getIntegers().read(1);
+                    final World world = player.getWorld();
+                    final int chunkX = event.getPacket().getIntegers().read(0);
+                    final int chunkZ = event.getPacket().getIntegers().read(1);
                     
                     plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> {
                         if (player.isOnline() && world.isChunkLoaded(chunkX, chunkZ)) {
                             Chunk chunk = world.getChunkAt(chunkX, chunkZ);
-                            ((TuffX) this.plugin).processAndSendChunk(player, chunk);
+                            plugin.processAndSendChunk(player, chunk);
                         }
                     });
                 }
